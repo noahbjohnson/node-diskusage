@@ -18,7 +18,7 @@ static Napi::Object getDiskUsage(const Napi::CallbackInfo& info) {
   
   DiskUsage usage = GetDiskUsage(pathText.c_str());
 
-  Napi::Object result = Napi::Object();
+  Napi::Object result = Napi::Object::New(env);
   result.Set("available", Napi::Number::New(env, static_cast<double>(usage.available)));
   result.Set("free", Napi::Number::New(env, static_cast<double>(usage.free)));
   result.Set("total", Napi::Number::New(env, static_cast<double>(usage.total)));
